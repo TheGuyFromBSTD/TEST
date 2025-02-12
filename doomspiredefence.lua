@@ -1,9 +1,11 @@
 local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))()
 local Window = DrRayLibrary:Load("Doomspire Defence", "Default")
-
+local plr = game.Players.LocalPlayer
 local stacking = false
 local realstacking = false
 local keep = true
+local slot = "1"
+local tower = ""
 
 local TowerTab = DrRayLibrary.newTab("Towers", "rbxassetid://15226714131")
 
@@ -13,6 +15,26 @@ end)
 
 TowerTab.newToggle([[Stacking]], "Cranking 90s????", false, function(toggleState)
     stacking = toggleState
+end)
+
+TowerTab.newDropdown("Change Selected Slot", "(for the loadout changer)", {"1", "2", "3", "4", "5", "6"}, function(selectedOption)
+    slot = selectedOption
+end)
+
+TowerTab.newDropdown("Change Tower (Starters)", "To change the tower in the selected slot", {"Battler", "Slingshotter", "Sword Master", "Paintballer", "Bomber", "Freezer"}, function(selectedOption)
+    tower = selectedOption
+end)
+
+TowerTab.newDropdown("Change Tower (Intermediate)", "To change the tower in the selected slot", {"Baller", "Rocketeer", "Mr Tix", "Troweler", "Arsenal", "Raygunner", "Cloner", "Six-Shooter"}, function(selectedOption)
+    tower = selectedOption
+end)
+
+TowerTab.newDropdown("Change Tower (Advanced)", "To change the tower in the selected slot", {"Spawn", "Pianist", "Heavy Gunner", "Boombox", "Hyperlaser", "Wizard", "Rockstar", "Shielder", "Corsair", "General", "Machinery", "Terminal Garage"}, function(selectedOption)
+    tower = selectedOption
+end)
+
+TowerTab.newButton("Set Slot", "Make sure to only place owned towers", function()
+    plr.Loadout[slot].Value = tower
 end)
 
 TowerTab.newButton("Place anywhere", "Thats right!", function()
@@ -75,7 +97,7 @@ end)
 
 Players.LocalPlayer.OnTeleport:Connect(function(State)
 	if State == Enum.TeleportState.Started then
-		if keep and queueteleport then
+		if keep then
 			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/TheGuyFromBSTD/TEST/refs/heads/main/doomspiredefence.lua'))()")
 		end
 	end
