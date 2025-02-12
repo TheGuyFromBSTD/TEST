@@ -38,8 +38,11 @@ MiscTab.newToggle([[Keep]], "if u teleport this stays", true, function(toggleSta
 end)
 
 if #game.Players:GetChildren() < 2 then
-    MiscTab.newButton("Change speed", "Only with gamepass tho :(", function()
-        game:GetService("ReplicatedStorage").Events.Game.ChangeSpeed:FireServer()
+    MiscTab.newButton("Set speed to 2", "Only with gamepass tho :(", function()
+        while workspace.Info.GameSpeed.Value < 2 do
+            game:GetService("ReplicatedStorage").Events.Game.ChangeSpeed:FireServer()
+            task.wait(0.5)
+        end
     end)
 end
 
