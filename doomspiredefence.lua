@@ -73,7 +73,7 @@ end)
 Players.LocalPlayer.OnTeleport:Connect(function(State)
 	if State == Enum.TeleportState.Started then
 		if keep and queueteleport then
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/TheGuyFromBSTD/TEST/refs/heads/main/doomspiredefence.lua'))()")
 		end
 	end
 end)
