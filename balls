@@ -195,7 +195,7 @@ local function WBDCCHX_fake_script() -- BallsGames.LocalScript
 			Desc.TextColor3 = Color3.fromRGB(0, 170, 0)
 			endscreen.Frame.Win.TextColor3 = Color3.fromRGB(0, 170, 0)
 			script.Parent:Destroy()
-			break
+			return true
 		end
 		if ballsdone < ballsneeded then
 			if timer <= 0 then
@@ -206,7 +206,7 @@ local function WBDCCHX_fake_script() -- BallsGames.LocalScript
 				Desc.TextColor3 = Color3.fromRGB(170, 0, 0)
 				endscreen.Frame.Win.TextColor3 = Color3.fromRGB(170, 0, 0)
 				script.Parent:Destroy()
-				break
+				return false
 			end
 		end
 	end
