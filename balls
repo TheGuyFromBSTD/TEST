@@ -12,10 +12,11 @@ local End = Instance.new("ScreenGui")
 local Frame1 = Instance.new("Frame")
 local Win = Instance.new("TextLabel")
 local Desc = Instance.new("TextLabel")
-
+local sus = {}
 BallsGames.Name = "BallsGames"
 BallsGames.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 BallsGames.IgnoreGuiInset = true
+BallsGames.Enabled = false
 
 Frame.Parent = BallsGames
 Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
