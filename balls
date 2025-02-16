@@ -148,52 +148,57 @@ local colors = {
 	[4] = {Name = "Yellow", Color = Color3.fromRGB(255, 255, 0)}
 }
 
-for i=1, ballsneeded do
-	local ball = Ball:Clone()
-	Instance.new("UIDragDetector", ball)
-	Instance.new("UIStroke", ball).Color = Color3.new(1, 1, 1)
-	local color = colors[math.random(1,4)]
-	ball.Parent = ui.Pit
-	ball.Name = color.Name
-	ball.Position = UDim2.fromScale(Random.new():NextNumber(0,1), Random.new():NextNumber(0,1))
-	ball.BackgroundColor3 = color.Color
-	ball.UIDragDetector.DragEnd:Connect(function(pos)
-		for i,v in pairs(plr.PlayerGui:GetGuiObjectsAtPosition(mouse.X, mouse.Y)) do
-			if v.Name == ball.Name and v.Parent == ui then
-				if ball:FindFirstChild("UIDragDetector") then
-					ball.UIStroke.Color = Color3.fromRGB(0, 0, 0)
-					ball.UIDragDetector:Destroy()
-					timer += 1
-					ballsdone += 1
-					ui.TimeLabel.Text = tostring(timer)
+function sus.startball()
+	for i=1, ballsneeded do
+		local ball = Ball:Clone()
+		Instance.new("UIDragDetector", ball)
+		Instance.new("UIStroke", ball).Color = Color3.new(1, 1, 1)
+		local color = colors[math.random(1,4)]
+		ball.Parent = ui.Pit
+		ball.Name = color.Name
+		ball.Position = UDim2.fromScale(Random.new():NextNumber(0,1), Random.new():NextNumber(0,1))
+		ball.BackgroundColor3 = color.Color
+		ball.UIDragDetector.DragEnd:Connect(function(pos)
+			for i,v in pairs(plr.PlayerGui:GetGuiObjectsAtPosition(mouse.X, mouse.Y)) do
+				if v.Name == ball.Name and v.Parent == ui then
+					if ball:FindFirstChild("UIDragDetector") then
+						ball.UIStroke.Color = Color3.fromRGB(0, 0, 0)
+						ball.UIDragDetector:Destroy()
+						timer += 1
+						ballsdone += 1
+						ui.TimeLabel.Text = tostring(timer)
+					end
 				end
 			end
-		end
-	end)
-end
-
-while task.wait(1) do
-	timer -= 1
-	ui.TimeLabel.Text = tostring(timer)
-
-	if ballsdone >= ballsneeded then
-		endscreen.Enabled = true
-		endscreen.Frame.Win.Text = "Victory Royale"
-		Desc.Text = "YIPPPEEEE"
-		Desc.TextColor3 = Color3.fromRGB(0, 170, 0)
-		endscreen.Frame.Win.TextColor3 = Color3.fromRGB(0, 170, 0)
-		BallsGames:Destroy()
-		return true
+		end)
 	end
-	if ballsdone < ballsneeded then
-		if timer <= 0 then
+	
+	while task.wait(1) do
+		timer -= 1
+		BallsGames.Enabled = true
+		ui.TimeLabel.Text = tostring(timer)
+	
+		if ballsdone >= ballsneeded then
 			endscreen.Enabled = true
-			endscreen.Frame.Win.Text = "Loser :((("
-			Desc.Text = "L BOZO"
-			Desc.TextColor3 = Color3.fromRGB(170, 0, 0)
-			endscreen.Frame.Win.TextColor3 = Color3.fromRGB(170, 0, 0)
+			endscreen.Frame.Win.Text = "Victory Royale"
+			Desc.Text = "YIPPPEEEE"
+			Desc.TextColor3 = Color3.fromRGB(0, 170, 0)
+			endscreen.Frame.Win.TextColor3 = Color3.fromRGB(0, 170, 0)
 			BallsGames:Destroy()
-			return false
+			return true
+		end
+		if ballsdone < ballsneeded then
+			if timer <= 0 then
+				endscreen.Enabled = true
+				endscreen.Frame.Win.Text = "Loser :((("
+				Desc.Text = "L BOZO"
+				Desc.TextColor3 = Color3.fromRGB(170, 0, 0)
+				endscreen.Frame.Win.TextColor3 = Color3.fromRGB(170, 0, 0)
+				BallsGames:Destroy()
+				return false
+			end
 		end
 	end
 end
+
+return sus
