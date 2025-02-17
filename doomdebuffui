@@ -4,12 +4,12 @@ local BG = Instance.new("ImageLabel")
 _G.DebuffStuff.Textholders = Instance.new("Frame")
 local UIListLayout = Instance.new("UIListLayout")
   
-Debuff.Name = "Debuff"
-Debuff.Parent = game.CoreGui
-Debuff.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+_G.DebuffStuff.DebuffUI.Name = "Debuff"
+_G.DebuffStuff.DebuffUI.Parent = game.CoreGui
+_G.DebuffStuff.DebuffUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Debuffs.Name = "Debuffs"
-Debuffs.Parent = Debuff
+Debuffs.Parent = _G.DebuffStuff.DebuffUI
 Debuffs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Debuffs.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Debuffs.BorderSizePixel = 0
@@ -27,13 +27,13 @@ BG.ImageColor3 = Color3.fromRGB(0, 0, 0)
 BG.ScaleType = Enum.ScaleType.Tile
 BG.TileSize = UDim2.new(0.5, 0, 0.25, 0)
 
-Textholders.Name = "Textholders"
-Textholders.Parent = Debuffs
-Textholders.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Textholders.BackgroundTransparency = 1.000
-Textholders.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Textholders.BorderSizePixel = 0
-Textholders.Size = UDim2.new(1, 0, 0.100000001, 0)
+_G.DebuffStuff.Textholders.Name = "Textholders"
+_G.DebuffStuff.Textholders.Parent = Debuffs
+_G.DebuffStuff.Textholders.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+_G.DebuffStuff.Textholders.BackgroundTransparency = 1.000
+_G.DebuffStuff.Textholders.BorderColor3 = Color3.fromRGB(0, 0, 0)
+_G.DebuffStuff.Textholders.BorderSizePixel = 0
+_G.DebuffStuff.Textholders.Size = UDim2.new(1, 0, 0.100000001, 0)
 
-UIListLayout.Parent = Textholders
+UIListLayout.Parent = _G.DebuffStuff.Textholders
 UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
