@@ -1,8 +1,7 @@
-local Debuff = Instance.new("ScreenGui")
+_G.MinigameStuff.DebuffUI = Instance.new("ScreenGui")
 local Debuffs = Instance.new("Frame")
 local BG = Instance.new("ImageLabel")
-_G.Textholders = Instance.new("Frame")
-local TextLabel = Instance.new("TextLabel")
+_G.MinigameStuff.Textholders = Instance.new("Frame")
 local UIListLayout = Instance.new("UIListLayout")
   
 Debuff.Name = "Debuff"
