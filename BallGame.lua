@@ -184,6 +184,7 @@ function sus.startball()
 		if ballsdone >= ballsneeded then
             _G.Busy = false
 			_G.Won = true
+			BallsGames.Enabled = false
 			endscreen.Enabled = true
 			endscreen.Frame.Win.Text = "Victory Royale"
 			Desc.Text = "YIPPPEEEE"
@@ -191,7 +192,6 @@ function sus.startball()
 			endscreen.Frame.Win.TextColor3 = Color3.fromRGB(0, 170, 0)
             task.spawn(function ()
                 task.wait(2)
-                BallsGames.Enabled = false
                 endscreen.Enabled = false
             end)
 			break
@@ -200,15 +200,14 @@ function sus.startball()
 			if timer <= 0 then
                 _G.Busy = false
 				_G.Won = false
+                BallsGames.Enabled = false
 				endscreen.Enabled = true
 				endscreen.Frame.Win.Text = "Loser :((("
 				Desc.Text = "L BOZO"
 				Desc.TextColor3 = Color3.fromRGB(170, 0, 0)
 				endscreen.Frame.Win.TextColor3 = Color3.fromRGB(170, 0, 0)
-                BallsGames.Enabled = false
                 task.spawn(function ()
                     task.wait(2)
-                    BallsGames.Enabled = false
                     endscreen.Enabled = false
                 end)
 				break
