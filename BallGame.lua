@@ -15,7 +15,7 @@ local Frame1 = Instance.new("Frame")
 local Win = Instance.new("TextLabel")
 local Desc = Instance.new("TextLabel")
 BallsGames.Name = "BallsGames"
-BallsGames.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+BallsGames.Parent = game.CoreGui
 BallsGames.IgnoreGuiInset = true
 BallsGames.Enabled = false
 
@@ -94,7 +94,7 @@ UICorner.Parent = Ball
 
 End.Name = "End"
 End.Enabled = false
-End.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+End.Parent = game.CoreGui
 End.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Frame1.Parent = End
@@ -147,10 +147,10 @@ local colors = {
 local timer = 3
 
 function sus.startball()
-    if _G.Busy == true then return end
-    _G.Busy = true
-	_G.Won = false
-	_G.PauseGame()
+    if _G.MinigameStuff.Busy == true then return end
+    _G.MinigameStuff.Busy = true
+	_G.MinigameStuff.Won = false
+	_G.MinigameStuff.PauseGame()
     local ballsneeded = math.random(3, 7)
     local ballsdone = 0
     timer = 3
@@ -183,9 +183,9 @@ function sus.startball()
 		timer -= 1
 		ui.TimeLabel.Text = tostring(timer)
 		if ballsdone >= ballsneeded then
-			_G.PauseGame()
-            _G.Busy = false
-			_G.Won = true
+			_G.MiscStuff.PauseGame()
+            _G.MinigameStuff.Busy = false
+			_G.MinigameStuff.Won = true
 			BallsGames.Enabled = false
 			endscreen.Enabled = true
 			endscreen.Frame.Win.Text = "Victory Royale"
@@ -200,9 +200,12 @@ function sus.startball()
 		end
 		if ballsdone < ballsneeded then
 			if timer <= 0 then
-				_G.PauseGame()
-                _G.Busy = false
-				_G.Won = false
+				_G.MiscStuff.PauseGame()
+                _G.MinigameStuff.Busy = false
+				_G.MinigameStuff.Won = false
+				if _G.DebuffStuff ~= nil then
+					_G.DebuffStuff.GiveDebuff()
+				end
                 BallsGames.Enabled = false
 				endscreen.Enabled = true
 				endscreen.Frame.Win.Text = "Loser :((("
