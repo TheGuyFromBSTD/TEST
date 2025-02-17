@@ -138,8 +138,6 @@ local plr = game.Players.LocalPlayer
 local ui = Frame
 local endscreen = End
 local mouse = game.Players.LocalPlayer:GetMouse()
-local busy = false
-local won = false
 local colors = {
 	[1] = {Name = "Green", Color = Color3.fromRGB(13, 225, 13)},
 	[2] = {Name = "Red", Color = Color3.fromRGB(255, 0, 0)},
@@ -149,9 +147,9 @@ local colors = {
 local timer = 3
 
 function sus.startball()
-    if busy == true then print("balls") return "nah" end
-    busy = true
-	won = false
+    if _G.Busy == true then print("balls") return "nah" end
+    _G.Busy = true
+	_G.Won = false
     local ballsneeded = math.random(1)
     local ballsdone = 0
     timer = 3
@@ -184,8 +182,8 @@ function sus.startball()
 		timer -= 1
 		ui.TimeLabel.Text = tostring(timer)
 		if ballsdone >= ballsneeded then
-            busy = false
-			won = true
+            _G.Busy = false
+			_G.Won = true
 			endscreen.Enabled = true
 			endscreen.Frame.Win.Text = "Victory Royale"
 			Desc.Text = "YIPPPEEEE"
@@ -200,8 +198,8 @@ function sus.startball()
 		end
 		if ballsdone < ballsneeded then
 			if timer <= 0 then
-                busy = false
-				won = true
+                _G.Busy = false
+				_G.Won = true
 				endscreen.Enabled = true
 				endscreen.Frame.Win.Text = "Loser :((("
 				Desc.Text = "L BOZO"
