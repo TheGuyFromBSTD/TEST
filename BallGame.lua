@@ -194,6 +194,7 @@ function sus.startball()
                 BallsGames.Enabled = false
                 endscreen.Enabled = false
             end)
+			break
 		end
 		if ballsdone < ballsneeded then
 			if timer <= 0 then
@@ -210,6 +211,7 @@ function sus.startball()
                     BallsGames.Enabled = false
                     endscreen.Enabled = false
                 end)
+				break
 			end
 		end
 	end
