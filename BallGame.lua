@@ -147,7 +147,7 @@ local colors = {
 local timer = 3
 
 function sus.startball()
-    if _G.Busy == true then print("balls") return "nah" end
+    if _G.Busy == true then return end
     _G.Busy = true
 	_G.Won = false
     local ballsneeded = math.random(1)
@@ -194,12 +194,11 @@ function sus.startball()
                 BallsGames.Enabled = false
                 endscreen.Enabled = false
             end)
-			return true
 		end
 		if ballsdone < ballsneeded then
 			if timer <= 0 then
                 _G.Busy = false
-				_G.Won = true
+				_G.Won = false
 				endscreen.Enabled = true
 				endscreen.Frame.Win.Text = "Loser :((("
 				Desc.Text = "L BOZO"
@@ -211,8 +210,9 @@ function sus.startball()
                     BallsGames.Enabled = false
                     endscreen.Enabled = false
                 end)
-				return false
 			end
 		end
 	end
 end
+
+return sus
