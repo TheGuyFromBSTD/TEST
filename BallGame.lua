@@ -144,16 +144,15 @@ local colors = {
 	[3] = {Name = "Blue", Color = Color3.fromRGB(17, 27, 225)},
 	[4] = {Name = "Yellow", Color = Color3.fromRGB(255, 255, 0)}
 }
-local timer = 3
 
 function sus.startball()
     if _G.MinigameStuff.Busy == true then return end
     _G.MinigameStuff.Busy = true
 	_G.MinigameStuff.Won = false
-	_G.MinigameStuff.PauseGame()
+	_G.MiscStuff.PauseGame()
     local ballsneeded = math.random(3, 7)
     local ballsdone = 0
-    timer = 3
+	local timer = 3
     Pit:ClearAllChildren()
 	for i=1, ballsneeded do
 		local ball = Ball:Clone()
