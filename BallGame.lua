@@ -150,7 +150,8 @@ function sus.startball()
     if _G.Busy == true then return end
     _G.Busy = true
 	_G.Won = false
-    local ballsneeded = math.random(1)
+	_G.PauseGame()
+    local ballsneeded = math.random(3, 7)
     local ballsdone = 0
     timer = 3
     Pit:ClearAllChildren()
@@ -190,6 +191,7 @@ function sus.startball()
 			Desc.Text = "YIPPPEEEE"
 			Desc.TextColor3 = Color3.fromRGB(0, 170, 0)
 			endscreen.Frame.Win.TextColor3 = Color3.fromRGB(0, 170, 0)
+			_G.PauseGame()
             task.spawn(function ()
                 task.wait(2)
                 endscreen.Enabled = false
@@ -206,6 +208,7 @@ function sus.startball()
 				Desc.Text = "L BOZO"
 				Desc.TextColor3 = Color3.fromRGB(170, 0, 0)
 				endscreen.Frame.Win.TextColor3 = Color3.fromRGB(170, 0, 0)
+				_G.PauseGame()
                 task.spawn(function ()
                     task.wait(2)
                     endscreen.Enabled = false
