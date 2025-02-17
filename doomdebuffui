@@ -14,7 +14,7 @@ Debuffs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Debuffs.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Debuffs.BorderSizePixel = 0
 Debuffs.Position = UDim2.new(0.829999983, 0, 0.1796875, 0)
-Debuffs.Size = UDim2.new(0, 243, 0, 466)
+Debuffs.Size = UDim2.new(0.178021982, 0, 0.606770813, 0)
 
 BG.Name = "BG"
 BG.Parent = Debuffs
